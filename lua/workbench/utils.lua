@@ -66,7 +66,6 @@ function utils.window_config(width, height)
 			col = (ui.width - width) / 2,
 			row = (ui.height - height) / 2,
 			style = "minimal",
-			focusable = false,
 			border = border,
 		}
 	else
@@ -77,7 +76,6 @@ function utils.window_config(width, height)
 			col = (ui.width - width) / 2,
 			row = (ui.height - height) / 2,
 			style = "minimal",
-			focusable = false,
 		}
 	end
 end
