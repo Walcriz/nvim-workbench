@@ -9,6 +9,8 @@ function M:new(workbench)
 	self.workbench = workbench
 	self.bufnr = vim.api.nvim_create_buf(false, true)
 	self.was_initialized = false
+
+	return o
 end
 
 function M:init()
@@ -37,7 +39,7 @@ function M:toggle()
 	end
 
 	-- override ui every time toggle is called
-	ui = vim.api.nvim_list_uis()[1]
+	self.ui = vim.api.nvim_list_uis()[1]
 
 	local buf_hidden = 0
 	local buf_info = vim.api.nvim_call_function("getbufinfo", { self.workbench.filepath() })[1]
