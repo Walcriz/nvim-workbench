@@ -5,6 +5,7 @@ local M = {}
 function M:new(workbench)
 	local o = {}
 	setmetatable(o, self)
+	self.__index = self
 
 	self.workbench = workbench
 	self.bufnr = vim.api.nvim_create_buf(false, true)
