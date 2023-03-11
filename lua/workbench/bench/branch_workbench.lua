@@ -3,7 +3,7 @@ local utils = require("workbench.utils")
 local base_bench = require("workbench.bench")
 
 function M.new()
-	local self = setmetatable(base_bench.new(), { __index = M })
+	local self = setmetatable(M, { __index = base_bench.new() })
 	return self
 end
 

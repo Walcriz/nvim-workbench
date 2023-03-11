@@ -17,8 +17,8 @@ function M:init()
 	--Get the current UI
 	self.ui = vim.api.nvim_list_uis()[1]
 
-	local width = round(ui.width * 0.5)
-	local height = round(ui.height * 0.5)
+	local width = round(self.ui.width * 0.5)
+	local height = round(self.ui.height * 0.5)
 
 	self.win_id = vim.api.nvim_open_win(M.bufnr, true, utils.window_config(width, height))
 
