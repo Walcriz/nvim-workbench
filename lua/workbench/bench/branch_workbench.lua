@@ -1,5 +1,6 @@
 local M = {}
 local utils = require("workbench.utils")
+local base_bench = require("workbench.bench")
 
 function M:new()
 	o = base_bench:new()
