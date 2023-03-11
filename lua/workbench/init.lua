@@ -1,5 +1,5 @@
-local project_workbench = require("workbench.project_workbench")
-local branch_workbench = require("workbench.branch_workbench")
+local project_workbench = require("workbench.bench.project_workbench")
+local branch_workbench = require("workbench.bench.branch_workbench")
 
 local workbench = {}
 
