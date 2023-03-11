@@ -2,11 +2,15 @@ local M = {}
 local utils = require("workbench.utils")
 local base_bench = require("workbench.bench")
 
-function M:new()
-	local o = base_bench:new()
-	setmetatable(o, self)
-	self.__index = self
-	return o
+setmetatable(M, {
+	__call = function(_, ...)
+		return M.new(...)
+	end,
+})
+
+function M.new()
+	local self = setmetatable(base_bench:new(), { __index = M })
+	return self:init()
 end
 
 function M:filepath()
