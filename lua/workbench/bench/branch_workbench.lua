@@ -1,7 +1,14 @@
-local branch_workbench = {}
+local M = {}
 local utils = require("workbench.utils")
 
-function branch_workbench.filepath()
+function M:new()
+	o = base_bench:new()
+	setmetatable(o, self)
+	self.__index = self
+	return o
+end
+
+function M:filepath()
 	-- for git flow the branch name is something like feature/ch1234/branch_name
 	local git_branch = utils.get_git_branch()
 	local parsed_git_branch =
@@ -9,14 +16,6 @@ function branch_workbench.filepath()
 	return utils.workbench_path() .. "/" .. parsed_git_branch .. "-branchbench.md"
 end
 
-function branch_workbench.initialize()
-	branch_workbench.base:init()
-end
+Branch_Workbench = Branch_Workbench or M:new()
 
-function branch_workbench.toggle()
-	branch_workbench.base:toggle()
-end
-
-branch_workbench.base = require("workbench.bench"):new(project_workbench)
-
-return branch_workbench
+return Branch_Workbench

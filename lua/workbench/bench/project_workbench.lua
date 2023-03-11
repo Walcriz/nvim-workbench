@@ -1,18 +1,18 @@
-local project_workbench = {}
+local M = {}
 local utils = require("workbench.utils")
+local base_bench = require("workbench.bench")
 
-function project_workbench.filepath()
+function M:new()
+	o = base_bench:new()
+	setmetatable(o, self)
+	self.__index = self
+	return o
+end
+
+function M:filepath()
 	return utils.workbench_path() .. "/" .. "workbench.md"
 end
 
-function project_workbench.initialize()
-	project_workbench.base:init()
-end
+Project_Workbench = Project_Workbench or M:new()
 
-function project_workbench.toggle()
-	project_workbench.base:toggle()
-end
-
-project_workbench.base = require("workbench.bench"):new(project_workbench)
-
-return project_workbench
+return Project_Workbench
