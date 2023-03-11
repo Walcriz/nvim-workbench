@@ -3,7 +3,7 @@ local utils = require("workbench.utils")
 local base_bench = require("workbench.bench")
 
 function M:new()
-	o = base_bench:new()
+	local o = base_bench:new()
 	setmetatable(o, self)
 	self.__index = self
 	return o
@@ -13,6 +13,4 @@ function M:filepath()
 	return utils.workbench_path() .. "/" .. "workbench.md"
 end
 
-Project_Workbench = M:new()
-
-return Project_Workbench
+return M

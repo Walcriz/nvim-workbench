@@ -3,7 +3,7 @@ local utils = require("workbench.utils")
 local base_bench = require("workbench.bench")
 
 function M:new()
-	o = base_bench:new()
+	local o = base_bench:new()
 	setmetatable(o, self)
 	self.__index = self
 	return o
@@ -17,6 +17,4 @@ function M:filepath()
 	return utils.workbench_path() .. "/" .. parsed_git_branch .. "-branchbench.md"
 end
 
-Branch_Workbench = Branch_Workbench or M:new()
-
-return Branch_Workbench
+return M
