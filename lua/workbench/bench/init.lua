@@ -2,12 +2,11 @@ local utils = require("workbench.utils")
 
 local M = {}
 
-function M:new(workbench)
+function M:new()
 	local o = {}
 	setmetatable(o, self)
 	self.__index = self
 
-	self.workbench = workbench
 	self.bufnr = vim.api.nvim_create_buf(false, true)
 	self.was_initialized = false
 
@@ -25,7 +24,7 @@ function M:init()
 
 	self.win_id = vim.api.nvim_open_win(M.bufnr, true, utils.window_config(width, height))
 
-	local open_file_cmd = "e " .. self.workbench.filepath()
+	local open_file_cmd = "e " .. self.filepath()
 	vim.api.nvim_command(open_file_cmd)
 end
 
@@ -43,7 +42,7 @@ function M:toggle()
 	self.ui = vim.api.nvim_list_uis()[1]
 
 	local buf_hidden = 0
-	local buf_info = vim.api.nvim_call_function("getbufinfo", { self.workbench.filepath() })[1]
+	local buf_info = vim.api.nvim_call_function("getbufinfo", { self.filepath() })[1]
 
 	if buf_info then
 		buf_hidden = buf_info.hidden
