@@ -2,15 +2,13 @@ local utils = require("workbench.utils")
 
 local M = {}
 
-function M:new()
-	local o = {}
-	setmetatable(o, self)
-	self.__index = self
+function M.new()
+	local self = setmetatable(o, { __index = M })
 
 	self.bufnr = vim.api.nvim_create_buf(false, true)
 	self.was_initialized = false
 
-	return o
+	return self
 end
 
 function M:init()
