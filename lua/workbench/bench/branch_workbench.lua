@@ -17,4 +17,6 @@ function branch_workbench.toggle()
 	branch_workbench.base:toggle()
 end
 
+branch_workbench.base = require("workbench.bench"):new(project_workbench)
+
 return branch_workbench

@@ -1,6 +1,4 @@
-local project_workbench = {
-	base = require("workbench.bench"):new(),
-}
+local project_workbench = {}
 local utils = require("workbench.utils")
 
 function project_workbench.filepath()
@@ -14,5 +12,7 @@ end
 function project_workbench.toggle()
 	project_workbench.base:toggle()
 end
+
+project_workbench.base = require("workbench.bench"):new(project_workbench)
 
 return project_workbench
