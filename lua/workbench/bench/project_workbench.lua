@@ -13,6 +13,6 @@ function M:filepath()
 	return utils.workbench_path() .. "/" .. "workbench.md"
 end
 
-Project_Workbench = Project_Workbench or M:new()
+Project_Workbench = M:new()
 
 return Project_Workbench
